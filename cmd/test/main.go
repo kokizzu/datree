@@ -2,9 +2,8 @@ package test
 
 import (
 	"fmt"
+	"github.com/datreeio/datree/pkg/extractor"
 	"time"
-
-	"github.com/datreeio/datree/pkg/cliClient"
 
 	"github.com/briandowns/spinner"
 	"github.com/datreeio/datree/bl/evaluation"
@@ -16,7 +15,7 @@ import (
 )
 
 type Evaluator interface {
-	Evaluate(validFilesPathsChan chan string, invalidFilesPaths chan *validation.InvalidFile, evaluationId int) (*evaluation.EvaluationResults, []*validation.InvalidFile, []*cliClient.FileConfiguration, []*evaluation.Error, error)
+	Evaluate(validFilesPathsChan chan string, invalidFilesPaths chan *validation.InvalidFile, evaluationId int) (*evaluation.EvaluationResults, []*validation.InvalidFile, []*extractor.FileConfiguration, []*evaluation.Error, error)
 	CreateEvaluation(cliId string, cliVersion string, k8sVersion string) (int, error)
 }
 
